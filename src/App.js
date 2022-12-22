@@ -1,10 +1,23 @@
 import './App.css';
-import { useEffect, useRef, useState } from 'react';
+import { getMovieList, searchMovie } from './api';
+import { useEffect, useState } from 'react';
 
 const App = () => {
+    const [popularMovies, setPopularMovies] = useState([]);
     const search = (a) => {
         console.log({ a });
     };
+    useEffect(() => {
+        getMovieList().then((result) => {
+            setPopularMovies(result);
+        });
+    }, []);
+    // useEffect(() => {
+    //     getMovieList();
+    // }, []);
+
+    console.log({ popularMovies: popularMovies });
+
     return (
         <div className="App">
             <header className="App-header">

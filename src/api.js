@@ -1,11 +1,13 @@
 import axios from 'axios';
 
-const getMovieList = async () => {
-    const movie = await axios.get('');
-    return;
-};
+const apiKey = process.env.REACT_APP_APIKEY;
+const baseUrl = process.env.REACT_APP_BASEURL;
 
-export default getMovieList;
+export const getMovieList = async () => {
+    const movie = await axios.get(`${baseUrl}/movie/popular?api_key=${apiKey}`);
+    // console.log({movieList : movie});
+    return movie.data.results;
+};
 
 export const searchMovie = async (a) => {
     const search = await axios.get(a);
