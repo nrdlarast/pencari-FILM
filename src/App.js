@@ -4,8 +4,11 @@ import { useEffect, useState } from 'react';
 
 const App = () => {
     const [popularMovies, setPopularMovies] = useState([]);
-    const search = (a) => {
-        console.log({ a });
+    const search = async (a) => {
+        if (a.length > 3) {
+            const query = await searchMovie(a);
+            setPopularMovies(query.results);
+        }
     };
     useEffect(() => {
         getMovieList().then((result) => {
@@ -15,6 +18,22 @@ const App = () => {
     // useEffect(() => {
     //     getMovieList();
     // }, []);
+
+    const PopularMovieList = () => {
+        return popularMovies.map((movie, i) => {
+            return (
+                <div className="Movie-wrapper" key={i}>
+                    <div className="Movie-tittle">{movie.title}</div>
+                    <img
+                        className="Movie-img"
+                        src={`${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`}
+                    />
+                    <div className="Movie-date">{movie.release_date}</div>
+                    <div className="Movie-rate">{movie.vote_average}</div>
+                </div>
+            );
+        });
+    };
 
     console.log({ popularMovies: popularMovies });
 
@@ -29,12 +48,7 @@ const App = () => {
                     onChange={({ target }) => search(target.value)}
                 />
                 <div className="Movie-container">
-                    <div className="Movie-wrapper">
-                        <div className="Movie-tittle">Contoh</div>
-                        <img className="Movie-img" src="#" />
-                        <div className="Movie-date">11-12-2022</div>
-                        <div className="Movie-rate">9.5/10</div>
-                    </div>
+                    <PopularMovieList />
                 </div>
             </header>
         </div>

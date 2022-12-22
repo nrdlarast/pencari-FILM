@@ -41,12 +41,13 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
   gap: 20px;
 }
 
 .Movie-wrapper{
-  width: 500px;
+  width: 400px;
   background-color: antiquewhite;
   color: black;
 }
@@ -57,4 +58,16 @@
   margin-bottom: 32px;
   padding: 0 12px;
   font-weight: bold;
+}
+
+.Movie-img{
+  width: 400px;
+}
+
+.Movie-tittle{
+  height: 79px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 30px;
 }
