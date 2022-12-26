@@ -48,8 +48,9 @@
 
 .Movie-wrapper{
   width: 400px;
-  background-color: antiquewhite;
+  background-color: rgb(172, 172, 172);
   color: black;
+  border-radius: 26px;
 }
 
 .Movie-search{
